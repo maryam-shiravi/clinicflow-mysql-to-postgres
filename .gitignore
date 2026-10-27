@@ -1,0 +1,12 @@
+# Python
+venv/
+__pycache__/
+*.pyc
+# Old copies (Git history replaces manual backups)
+migrator_backup/
+# Secrets and connection files
+.env
+.pg_service.conf
+.pgpass
+*.pem
+*.zip
