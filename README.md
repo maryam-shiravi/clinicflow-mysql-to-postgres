@@ -15,7 +15,7 @@ The source database is **synthetic**: it was generated with Faker and contains n
 
 ## Results
 
-Latest verification run (`migrator/out/migration_report.md`): **all 8 tables PASS, 17,028,800 rows compared, 0 mismatched, 0 quarantined.**
+Latest verification run, against the PostgreSQL 18 instance on AWS RDS (`migrator/out/migration_report.md`): **all 8 tables PASS, 17,028,800 rows compared, 0 mismatched, 0 quarantined.** The load itself (17,028,800 rows) took about 885 seconds (roughly 15 minutes) on a `db.t4g.micro` instance.
 
 | Table | Rows compared | Matched |
 |---|---|---|
@@ -75,7 +75,9 @@ python migrator/verify.py
 python migrator/checksum_verify.py
 ```
 
-Passwords are always typed at a prompt. They are never stored in the code or in the repository. Connections to PostgreSQL are created by `connect_pg()` in `migrator/common.py`.
+Passwords are always typed at a prompt. They are never stored in the code or in the repository.
+
+The PostgreSQL target is chosen with the `PG_SERVICE` environment variable, which names a section in your own `~/.pg_service.conf` (host, port, database, user, TLS settings). That file is deliberately not part of the repository. Example: `PG_SERVICE=local_pg python migrator/run_all.py --dry-run`. Connections are created by `connect_pg()` in `migrator/common.py`.
 
 ## Design decisions
 
