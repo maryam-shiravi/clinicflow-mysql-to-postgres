@@ -1,0 +1,5 @@
+# Third-party packages used by the migrator and the seed script.
+# Pinned to the exact versions the project was developed and tested with.
+Faker==40.39.0
+mysql-connector-python==26.7.0
+psycopg2-binary==2.9.13
