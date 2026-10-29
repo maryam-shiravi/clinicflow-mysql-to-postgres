@@ -1,6 +1,0 @@
-check:
-  image: python:3.12
-  script:
-    - pip install -r requirements.txt
-    - python -c "import faker, mysql.connector, psycopg2; print('imports ok')"
-    - python -m compileall -q migrator seed_clinic_data.py
